@@ -6,7 +6,7 @@ namespace LeapYear.Tests
     public class ProgramTests
     {
         [Fact]
-        public void main_agrees_year_4()
+        public void isLeapYear_agrees_year_4()
         {
             Program program = new Program();
 
@@ -16,7 +16,7 @@ namespace LeapYear.Tests
         }
 
         [Fact]
-        public void main_disagrees_year_5()
+        public void isLeapYear_disagrees_year_5()
         {
             Program program = new Program();
 
@@ -26,7 +26,7 @@ namespace LeapYear.Tests
         }
 
         [Fact]
-        public void main_disagrees_year_200()
+        public void isLeapYear_disagrees_year_200()
         {
             Program program = new Program();
 
@@ -36,7 +36,7 @@ namespace LeapYear.Tests
         }
 
         [Fact]
-        public void main_agrees_year_400()
+        public void isLeapYear_agrees_year_400()
         {
             Program program = new Program();
 
@@ -46,7 +46,7 @@ namespace LeapYear.Tests
         }
 
         [Fact]
-        public void main_agrees_year_0()
+        public void isLeapYear_agrees_year_0()
         {
             Program program = new Program();
 
