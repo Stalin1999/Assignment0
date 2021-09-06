@@ -59,7 +59,7 @@ namespace LeapYear.Tests
         [Fact]
         public void main_agrees_year_4()
         {
-            var reader = new StringReader("4");
+            var reader = new StringReader("1704");
             Console.SetIn(reader);
             var writer = new StringWriter();
             Console.SetOut(writer);
@@ -74,7 +74,7 @@ namespace LeapYear.Tests
         public void main_disagrees_year_5()
         {
         
-            var reader = new StringReader("5");
+            var reader = new StringReader("1705");
             Console.SetIn(reader);
             var writer = new StringWriter();
             Console.SetOut(writer);
@@ -83,6 +83,66 @@ namespace LeapYear.Tests
             var output = writer.GetStringBuilder().ToString().Trim();
 
             Assert.Equal("nay", output);
+        }
+
+        [Fact]
+        public void main_disallows_year_4()
+        {
+        
+            var reader = new StringReader("4");
+            Console.SetIn(reader);
+            var writer = new StringWriter();
+            Console.SetOut(writer);
+
+            Program.Main(new string[] { });
+            var output = writer.GetStringBuilder().ToString().Trim();
+
+            Assert.Contains("ERROR", output);
+        }
+
+        [Fact]
+        public void main_disallows_letters()
+        {
+        
+            var reader = new StringReader("abcdefg");
+            Console.SetIn(reader);
+            var writer = new StringWriter();
+            Console.SetOut(writer);
+
+            Program.Main(new string[] { });
+            var output = writer.GetStringBuilder().ToString().Trim();
+
+            Assert.Contains("ERROR", output);
+        }
+
+        [Fact]
+        public void main_disallows_special_characters()
+        {
+        
+            var reader = new StringReader("!?#¤");
+            Console.SetIn(reader);
+            var writer = new StringWriter();
+            Console.SetOut(writer);
+
+            Program.Main(new string[] { });
+            var output = writer.GetStringBuilder().ToString().Trim();
+
+            Assert.Contains("ERROR", output);
+        }
+
+        [Fact]
+        public void main_disallows_float_numbers()
+        {
+        
+            var reader = new StringReader("1893.573");
+            Console.SetIn(reader);
+            var writer = new StringWriter();
+            Console.SetOut(writer);
+
+            Program.Main(new string[] { });
+            var output = writer.GetStringBuilder().ToString().Trim();
+
+            Assert.Contains("ERROR", output);
         }
     }
 }
