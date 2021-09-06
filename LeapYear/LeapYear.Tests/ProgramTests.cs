@@ -1,4 +1,5 @@
 using System;
+using System.IO;
 using Xunit;
 
 namespace LeapYear.Tests
@@ -53,6 +54,35 @@ namespace LeapYear.Tests
             bool output = program.isLeapYear(0);
 
             Assert.Equal(true, output);
+        }
+
+        [Fact]
+        public void main_agrees_year_4()
+        {
+            var reader = new StringReader("4");
+            Console.SetIn(reader);
+            var writer = new StringWriter();
+            Console.SetOut(writer);
+
+            Program.Main(new string[] { });
+            var output = writer.GetStringBuilder().ToString().Trim();
+
+            Assert.Equal("yay", output);
+        }
+
+        [Fact]
+        public void main_disagrees_year_5()
+        {
+        
+            var reader = new StringReader("5");
+            Console.SetIn(reader);
+            var writer = new StringWriter();
+            Console.SetOut(writer);
+
+            Program.Main(new string[] { });
+            var output = writer.GetStringBuilder().ToString().Trim();
+
+            Assert.Equal("nay", output);
         }
     }
 }
